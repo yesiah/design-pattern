@@ -1,3 +1,4 @@
+#include <array>
 #include <string>
 
 class DataProvider {
@@ -25,34 +26,39 @@ public:
 ///
 /// Database Implementation
 ///
-// class SQLServer : public DataProvider {
-//     virtual Iterator GetFirst() const override {
-//         return {};
-//     }
+class SQLServer : public DataProvider {
+    virtual Iterator GetFirst() const override {
+        return {"SQLServer"};
+    }
 
-//     virtual bool HasMore() const override {
-//         return false;
-//     }
+    virtual bool HasMore() const override {
+        return false;
+    }
 
-//     virtual Iterator GetNext() const override {
-//         return {};
-//     }
+    virtual Iterator GetNext() const override {
+        return {"SQLServer"};
+    }
 
-//     virtual Iterator GetNth() const override {
-//         return {};
-//     }
-// };
+    virtual Iterator GetNth() const override {
+        return {"SQLServer"};
+    }
+};
 
 ///
 /// Local Database Implementation
 ///
 class LevelDb : public DataProvider {
+public:
     virtual Iterator GetFirst() const override {
-        return {"LevelDb"};
+        return GetNext();
     }
 
+    ///
+    /// To simulate a db with only 5 elements
+    ///
     virtual bool HasMore() const override {
-        return false;
+        static int count = 0;
+        return ++count < 5;
     }
 
     virtual Iterator GetNext() const override {
