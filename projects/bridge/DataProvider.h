@@ -31,6 +31,10 @@ class SQLServer : public DataProvider {
         return {"SQLServer"};
     }
 
+    ///
+    /// vvvvvvvvvv Unused below vvvvvvvvvvv
+    ///
+
     virtual bool HasMore() const override {
         return false;
     }
@@ -65,6 +69,10 @@ public:
         return {"LevelDb"};
     }
 
+    ///
+    /// vvvvvvvvvv Unused below vvvvvvvvvvv
+    ///
+
     virtual Iterator GetNth(int n) const override {
         return {"LevelDb"};
     }
@@ -73,21 +81,25 @@ public:
 ///
 /// Textfile Implementation
 ///
-// class Csv : public DataProvider {
-//     virtual Iterator GetFirst() const override {
+class Csv : public DataProvider {
+    virtual Iterator GetFirst() const override {
+        return {""};
+    }
 
-//         return {};
-//     }
+    virtual bool HasMore() const override {
+        return false;
+    }
 
-//     virtual bool HasMore() const override {
-//         return false;
-//     }
+    virtual Iterator GetNext() const override {
+        return {""};
+    }
 
-//     virtual Iterator GetNext() const override {
-//         return {};
-//     }
+    ///
+    /// ^^^^^^^^^ Unused above ^^^^^^^^^^
+    ///
 
-//     virtual Iterator GetNth() const override {
-//         return {};
-//     }
-// };
+    virtual Iterator GetNth(int n) const override {
+        std::string result = "Csv " + std::to_string(n);
+        return result;
+    }
+};

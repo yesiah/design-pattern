@@ -18,22 +18,25 @@ protected:
 };
 
 ///
-/// For Client2, support sequential access
+/// For Client 2, support sequential access
 /// 
 class SequentialAccess : public DataConsumer {
 public:
     SequentialAccess();
     virtual ~SequentialAccess() = default;
 
-    Iterator GetFirst() const {
-        return provider->GetFirst();
-    }
+    Iterator GetFirst() const;
+    bool HasNext() const;
+    Iterator GetNext() const;
+};
 
-    bool HasNext() const {
-        return provider->HasMore();
-    }
+///
+/// Client 3, random access
+///
+class RandomAccess : public DataConsumer {
+public:
+    RandomAccess();
+    virtual ~RandomAccess() = default;
 
-    Iterator GetNext() const {
-        return provider->GetNext();
-    }
+    Iterator GetRandom() const;
 };

@@ -11,7 +11,7 @@ void RunClient1() {
 }
 
 ///
-/// Client2 would like to have sequential access to data
+/// Client 2 would like to have sequential access to data
 ///
 void RunClient2() {
     SequentialAccess sequential;
@@ -23,10 +23,27 @@ void RunClient2() {
     }
 }
 
+///
+/// Client 3 access randomly
+///
+void RunClient3() {
+    RandomAccess random;
+    for (int i = 0; i < 10; ++i) {
+        auto iter = random.GetRandom();
+        std::cout << iter.Value() << std::endl;
+    }
+}
+
+
 int main() {
-    std::cout << "==== Run Client1 ====" << std::endl;
+    std::cout << "==== Run Client 1 ====" << std::endl;
     RunClient1();
+
     std::cout << std::endl;
-    std::cout << "==== Run Client2 ====" << std::endl;
+    std::cout << "==== Run Client 2 ====" << std::endl;
     RunClient2();
+
+    std::cout << std::endl;
+    std::cout << "==== Run Client 3 ====" << std::endl;
+    RunClient3();
 }
