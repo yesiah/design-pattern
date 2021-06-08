@@ -1,11 +1,17 @@
+#include <string>
 
 class DataProvider {
 public:
+    /// dummy iterator
     struct Iterator {
-        // dummy iterator
-        int Value() const {
-            return 10;
+        Iterator(std::string value) : value(value) {}
+
+        std::string Value() const {
+            return value;
         }
+    
+    private:
+        std::string value;
     };
 
     virtual ~DataProvider() {};
@@ -42,7 +48,7 @@ public:
 ///
 class LevelDb : public DataProvider {
     virtual Iterator GetFirst() const override {
-        return {};
+        return {"LevelDb"};
     }
 
     virtual bool HasMore() const override {
@@ -50,11 +56,11 @@ class LevelDb : public DataProvider {
     }
 
     virtual Iterator GetNext() const override {
-        return {};
+        return {"LevelDb"};
     }
 
     virtual Iterator GetNth() const override {
-        return {};
+        return {"LevelDb"};
     }
 };
 
