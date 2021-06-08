@@ -20,7 +20,7 @@ public:
     virtual Iterator GetFirst() const = 0;
     virtual bool HasMore() const = 0;
     virtual Iterator GetNext() const = 0;
-    virtual Iterator GetNth() const = 0;
+    virtual Iterator GetNth(int n) const = 0;
 };
 
 ///
@@ -39,7 +39,7 @@ class SQLServer : public DataProvider {
         return {"SQLServer"};
     }
 
-    virtual Iterator GetNth() const override {
+    virtual Iterator GetNth(int n) const override {
         return {"SQLServer"};
     }
 };
@@ -65,7 +65,7 @@ public:
         return {"LevelDb"};
     }
 
-    virtual Iterator GetNth() const override {
+    virtual Iterator GetNth(int n) const override {
         return {"LevelDb"};
     }
 };
