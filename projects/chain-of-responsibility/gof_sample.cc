@@ -16,7 +16,7 @@ int main() {
     std::cout << std::endl << "==== Show help on Dialog ====" << std::endl;
     dialog->HandleEvent(Event::kShowHelp);
 
-    std::cout << std::endl << "==== Show help Application ====" << std::endl;
+    std::cout << std::endl << "==== Show help on Application ====" << std::endl;
     app->HandleEvent(Event::kShowHelp);
 
     std::cout << std::endl;
